@@ -175,6 +175,11 @@ export default function User(props) {
           </Grid>
         </Grid>
 
+        <Grid item xs ={12}>
+          <Banner title="Reseñas Tuyas"/>
+        </Grid>
+
+
         <Grid item container xs={12}>
           {res.length > 0 && res.map((rev) => <Review info={rev} />)}
         </Grid>
