@@ -4,19 +4,22 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    maxWidth: 500
+    backgroundColor: "grey",
+    padding: "10 10",
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(6, 6),
   }
-});
+}));
 
 export default function Review(props) {
   const classes = useStyles();
   const {title, user, rating, body} = props.info
 
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" className={classes.root}>
       <Grid item xs={12}>
         <Typography variant="h5" gutterBottom>
           {title}
@@ -31,23 +34,16 @@ export default function Review(props) {
         </Grid>
         <Grid item xs={6}>
           <Typography variant="subtitle1" gutterBottom>
-            {rating}
+            Score: {rating}
           </Typography>
         </Grid>
       </Grid>
 
       <Grid item xs={12}>
         <Typography variant="body1" gutterBottom>
-          b{body}
+          {body}
         </Typography>
       </Grid>
-
-      <Grid item xs={12} md={2}>
-      <Typography variant="caption" display="block" gutterBottom>
-        Leer Mas
-      </Typography>
-      </Grid>
-
 
       </Container>
 

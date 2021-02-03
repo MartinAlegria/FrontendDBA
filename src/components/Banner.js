@@ -18,16 +18,17 @@ const useStyles = makeStyles((theme)=>({
       },
 }));
 
-export default function ReviewBanner({title}) {
+export default function Banner({title, image}) {
   const classes = useStyles();
   const text = title ? title: "Reseñas"
+  const img = image ? image: 'https://patch.com/img/cdn20/users/23829258/20201204/110228/styles/patch_image/public/movie3___04110058520.jpg'
 
 
   return (
     <Card className={classes.root}>
         <CardMedia
           className={classes.media}
-          image="https://patch.com/img/cdn20/users/23829258/20201204/110228/styles/patch_image/public/movie3___04110058520.jpg"
+          image={img}
           style={{display:"flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}
         >
             <div className={classes.r}>

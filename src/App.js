@@ -1,4 +1,4 @@
-import Base from "./layouts/Base"
+import User from "./layouts/User"
 import Home from "./layouts/Home"
 import Movie from "./layouts/Movie"
 import Person from "./layouts/Person"
@@ -19,6 +19,7 @@ function App() {
       <Route exact path='/' exact component={Home}/>
       <Route exact path='/Person/:type/:id' exact component={Person}/>
       <Route exact path='/Movie/:id' exact component={Movie}/>
+      <Route exact path='/User/:user' exact component={User}/>
       <Route exact path='/SearchResults/:movie' exact component={SearchResults}/>
       <Route exact path='/SignIn' exact component={SignIn}/>
       <Route exact path='/SignUp' exact component={SignUp}/>

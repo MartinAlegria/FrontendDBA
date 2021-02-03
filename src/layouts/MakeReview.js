@@ -6,7 +6,7 @@ import Base from "./Base";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Rating from "@material-ui/lab/Rating";
-import ReviewBanner from "../components/ReviewBanner";
+import Banner from "../components/Banner";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -44,7 +44,7 @@ export default function MakeReview(props) {
     <Base>
       <Grid container xs={12} className={classes.root} spacing={3}>
         <Grid item xs={12}>
-          <ReviewBanner title={"Reseña"} />
+          <Banner title={"Reseña"} />
         </Grid>
         <Grid item container xs={12} style={{ placeContent: "center" }}>
           <Typography variant="h4" component="h2">

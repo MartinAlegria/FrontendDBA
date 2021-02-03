@@ -12,7 +12,7 @@ import RatingCard from '../components/RatingCard';
 import MovieDetails from '../components/MovieDetails'
 import Actor from '../components/Actor'
 import Review from '../components/Review';
-import ReviewBanner from '../components/ReviewBanner';
+import Banner from '../components/Banner';
 import Base from './Base'
 
 const darkTheme = createMuiTheme({
@@ -111,7 +111,7 @@ const reviews=[
             </Grid>
 
             <Grid item xs={12}>
-            <ReviewBanner/>
+            <Banner/>
             </Grid>
 
             <Grid item container xs={12} spacing={3}>
