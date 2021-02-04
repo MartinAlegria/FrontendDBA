@@ -48,7 +48,7 @@ function Sidebar(props) {
     };
 
     fetchData();
-  });
+  },[]);
 
   return (
     <Grid item xs={12} md={4}>
