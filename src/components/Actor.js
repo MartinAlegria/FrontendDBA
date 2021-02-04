@@ -44,9 +44,9 @@ export default function Actor(props) {
   const {name,img} = props.info
 
   return (
-    <Grid item xs={12} md = {props.fit}>
+    <Grid item xs={12} md = {6}>
       <Card className={classes.root}>
-        <Link to={`/Person/${name}`} className={classes.root}>
+        <Link to={`/Person/Actor/${name}`} className={classes.root}>
         <CardActionArea style ={{display: "flex"}}>
       <div className={classes.details}>
         <CardContent className={classes.content}>

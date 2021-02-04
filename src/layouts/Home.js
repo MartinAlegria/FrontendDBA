@@ -55,16 +55,7 @@ const sidebar = {
   title: "About",
   description: "Pelis muy chidas con sus scores y sus resenias ",
   archives: [
-    { title: "Peli 1", url: "#", score: "100%" },
-    { title: "Peli 2", url: "#", score: "67%" },
-    { title: "Peli 3", url: "#", score: "45%" },
-    { title: "Peli 4", url: "#", score: "23%" },
-    { title: "Peli 5", url: "#", score: "12%" },
-    { title: "Peli 6", url: "#", score: "68%" },
-    { title: "Peli 7", url: "#", score: "56%" },
-    { title: "Peli 8", url: "#", score: "12%" },
-    { title: "Peli 9", url: "#", score: "97%" },
-    { title: "Peli 10", url: "#", score: "87%" },
+    { title: "Peli 1", url: "/Movie/Avengers", score: "100%" },
   ],
   social: [
     { name: "Twitter", icon: TwitterIcon },
@@ -85,7 +76,7 @@ export default function Home(props) {
             <Sidebar
               title={sidebar.title}
               description={sidebar.description}
-              archives={sidebar.archives}
+              good={sidebar.archives}
               social={sidebar.social}
             />
             <Grid item container xs={12} md={8} spacing={3}>

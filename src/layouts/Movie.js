@@ -67,7 +67,6 @@ const reviews=[
         actorInfo:[]
     });
 
-    const fit = Math.floor(12/movieDetails.actorInfo.length)
 
     useEffect(()=>{
       
@@ -105,7 +104,7 @@ const reviews=[
 
             <Grid item container xs={12} spacing ={3}> 
               {movieDetails.actorInfo.map(actor=> 
-                <Actor info={actor} fit={fit}/>
+                <Actor info={actor}/>
                 )}
 
             </Grid>

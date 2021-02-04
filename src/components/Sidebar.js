@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Sidebar(props) {
   const classes = useStyles();
-  const { archives, description, social, title } = props;
+  const { good, bad , description, social, title } = props;
 
   return (
     <Grid item xs={12} md={4}>
@@ -33,9 +33,9 @@ function Sidebar(props) {
         <Typography>{description}</Typography>
       </Paper>
       <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
-        Top 10 - Peliculas
+        Top 5 - Peliculas
       </Typography >
-      {archives.map((archive) => (
+      {good.map((archive) => (
         <Link display="block" variant="body1" className={classes.sidebarSection} href={archive.url} key={archive.title}>
           {archive.title} - {archive.score}
         </Link>
