@@ -41,6 +41,13 @@ export default function MakeReview(props) {
 
   const postReview = async () => {
     //Crear reseña en backend
+    const req = {
+      method: "POST",
+      body: new URLSearchParams({
+        username: "userPass.user",
+        review: "userPass.pass",
+      }),
+    };
     const responsefetch = await (
       await fetch(
         `http://localhost:9000/createReview/${props.match.params.user}/${res}/${rating}/${props.match.params.movie}`

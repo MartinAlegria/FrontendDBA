@@ -147,6 +147,10 @@ export default function Base(props) {
 
   React.useEffect(()=>{
     //Obtener info de usuario
+    fetch('http://localhost:9000/userInfo').
+    then(res => res.json())
+    .then(res => console.log(res))
+
     if(sessionStorage.getItem('user')){
       setUser(sessionStorage.getItem('user'))
     }

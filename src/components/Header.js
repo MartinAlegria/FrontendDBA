@@ -104,8 +104,8 @@ function Header(props) {
   }
 
   const handleClick = () =>{
-    console.log("asdfas")
     sessionStorage.removeItem('user');
+    alert("Has salido de tu sesion")
     window.location.reload();
   }
 

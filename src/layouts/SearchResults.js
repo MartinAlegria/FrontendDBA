@@ -39,7 +39,7 @@ export default function SearchResults(props) {
     };
 
     fetchMovies();
-  },[]);
+  },[props.match.params.movie]);
 
   return (
     <Base>

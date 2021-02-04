@@ -65,7 +65,17 @@ export default function User(props) {
 
 
   const editUser = async () =>{
-    const response = await (await fetch(`http://localhost:9000/editUser/${props.match.params.user}/${userInfo.password}/${userInfo.mail}/${userInfo.genero}/${userInfo.fecha}`)).json();
+    const req = {
+      method: "POST",
+      body: new URLSearchParams({
+        username: props.match.params.user,
+        mail: userInfo.mail,
+        genero: userInfo.genero,
+        fecha: userInfo.fecha
+      }),
+    };
+    const response = await (await fetch(`http://localhost:9000/editUser`, req)).text();
+    console.log(response)
   }
 
   const handleClick = () => {
