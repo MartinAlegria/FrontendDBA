@@ -8,9 +8,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import { useHistory } from "react-router-dom";
 import SearchIcon from '@material-ui/icons/Search';
-import Typography from '@material-ui/core/Typography';
+import logo from '../images/PelisChidas.png'
 import InputBase from '@material-ui/core/InputBase';
-import Autocomplete from '@material-ui/lab/Autocomplete';
 import Link from '@material-ui/core/Link';
 import { Avatar } from '@material-ui/core';
 
@@ -21,9 +20,10 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbarTitle: {
     flex: 1,
-    marginLeft:30,
     textDecoration: "none",
-    color: "white"
+    color: "white",
+    height: 70,
+    textAlign: "center"
   },
   toolbarSecondary: {
     justifyContent: 'space-between',
@@ -102,10 +102,24 @@ function Header(props) {
     history.push(`/SearchResults/${search}`)
   }
 
-  const handleClick = () =>{
-    sessionStorage.removeItem('user');
-    alert("Has salido de tu sesion")
-    window.location.reload();
+  const handleClick = async () =>{
+
+      const req = {
+        method: "POST",
+        body: new URLSearchParams({
+          user: sessionStorage.getItem('user') 
+        }),
+      };
+      
+      const resp = await (await fetch('http://localhost:9000/logout',req)).text()
+      console.log(resp)
+
+      if(resp === "OK"){
+        sessionStorage.removeItem('user');
+        alert("Has salido de tu sesion")
+        window.location.reload();
+      }
+
   }
 
   return (
@@ -139,16 +153,7 @@ function Header(props) {
             color="inherit"
             href={"/"}
           className={classes.toolbarTitle}>
-                    <Typography
-          component="h2"
-          variant="h5"
-          color="inherit"
-          align="center"
-          noWrap
-          className={classes.toolbarTitle}
-        >
-          PelisChidas.com
-        </Typography>
+          <img src={logo} className={classes.toolbarTitle}/>
           </Link>
 
 

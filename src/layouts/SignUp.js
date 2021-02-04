@@ -95,8 +95,12 @@ export default function SignUp() {
       }),
     };
     const response = await (await fetch(`http://localhost:9000/registerUser`, req)).text()
-    sessionStorage.setItem('user', user)
-    history.push('/')
+
+    if(response === "OK"){
+      alert("Registrado correctamente, prosiga a iniciar sesion")
+      history.push('/SignIn')
+    }
+    
 
   }
 

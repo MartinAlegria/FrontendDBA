@@ -29,21 +29,19 @@ export default function User(props) {
     fecha: null,
         genero: null,
         mail: null,
-        pass: null
   })
 
   useEffect(() => {
     const fetchData = async () => {
 
 
-      const response2 = await (await fetch(`http://localhost:9000/userInfoGet/${props.match.params.user}`)).json()
+      const response2 = await (await fetch(`http://localhost:9000/userInfo/${props.match.params.user}`)).json()
       console.log(response2)
 
       setUserInfo({
-        fecha: response2[0].fechaDeNacimiento,
-        genero: response2[0].genero,
-        mail: response2[0].mail,
-        pass: response2[0].password
+        fecha: response2[3].fechaDeNacimiento,
+        genero: response2[2].genero,
+        mail: response2[1].mail,
       })
 
       const response = await (
