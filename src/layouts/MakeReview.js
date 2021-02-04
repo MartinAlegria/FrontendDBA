@@ -1,13 +1,18 @@
+//Módulos
 import React from "react";
+import { useHistory } from "react-router-dom";
+
+//Estilos
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
-import Base from "./Base";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Rating from "@material-ui/lab/Rating";
+
+//Componentes
+import Base from "./Base";
 import Banner from "../components/Banner";
-import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,6 +23,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+/**
+ * Página donde el usuario puede hacer una reseña.
+ * 
+ * @param {string} user usuario actual.
+ * @param {string} movie película a calificar.
+ *
+ */
 export default function MakeReview(props) {
   let history = useHistory();
 
@@ -27,6 +40,7 @@ export default function MakeReview(props) {
   const [hover, setHover] = React.useState(-1);
 
   const postReview = async () => {
+    //Crear reseña en backend
     const responsefetch = await (
       await fetch(
         `http://localhost:9000/createReview/${props.match.params.user}/${res}/${rating}/${props.match.params.movie}`

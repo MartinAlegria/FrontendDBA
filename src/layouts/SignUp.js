@@ -1,4 +1,7 @@
+//Modulos
 import React from "react";
+
+//Estilos
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
@@ -18,12 +21,17 @@ import {
 } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
+/**
+ * Información copyright en footer
+ * Para exportar a layout: <Copyright />
+ *
+ */
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        Pelis Chidas
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -57,6 +65,11 @@ const darkTheme = createMuiTheme({
   },
 });
 
+/**
+ * Página para registrar a un usuario
+ * Para exportar a layout: <SignUp />
+ *
+ */
 export default function SignUp() {
   const classes = useStyles();
 

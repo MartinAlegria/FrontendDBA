@@ -1,5 +1,8 @@
+//Componentes
 import React from "react";
 import Grid from "@material-ui/core/Grid";
+
+//Estilos
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
@@ -14,6 +17,15 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+/**
+ * Mostrar reseña de una pelicula
+ * @param {string} title Título de la película
+ * @param {integer} user Usuario que realizó la reseña
+ * @param {integer} rating Calificación asignada por el usuario
+ * @param {string} body Comentario a la película realizado por el usuario
+ * Para exportar a layout: <Review />
+ *
+ */
 export default function Review(props) {
   const classes = useStyles();
   const {title, user, rating, body} = props.info

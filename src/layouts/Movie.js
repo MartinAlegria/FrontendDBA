@@ -1,5 +1,8 @@
+//Módulos
 import * as React from 'react';
 import {useEffect, useState} from 'react';
+
+//Estilos
 import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import {
   Grid,
@@ -7,6 +10,8 @@ import {
   Container,
   List,
 } from "@material-ui/core"
+
+//Componentes
 import MovieInfoCard from '../components/MovieInfoCard';
 import RatingCard from '../components/RatingCard';
 import MovieDetails from '../components/MovieDetails'
@@ -52,8 +57,12 @@ const reviews=[
   }
 ]
 
- 
-
+ /**
+ * Página donde se consulta la información de una película.
+ * 
+ * @param {string} id nombre de la película.
+ *
+ */
   export default function Movie(props){
     const classes = useStyles();
     let [movieDetails, setMovieDetails] = useState({
@@ -71,6 +80,7 @@ const reviews=[
     useEffect(()=>{
       
       const fetchData = async () =>{
+        //Obtener datos de la película, sus actores y su director.
         const movieResp = await (await fetch(`http://localhost:9000/movieFilter/${props.match.params.id}`)).json();
         const dirObj = await (await fetch(`http://localhost:9000/movieDirector/${props.match.params.id}`)).json();
         const actorResp = await (await fetch(`http://localhost:9000/movieActors/${props.match.params.id}`)).json();

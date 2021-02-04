@@ -1,4 +1,7 @@
+//Modulos
 import React from "react";
+
+//Estilo
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
@@ -12,7 +15,16 @@ const useStyles = makeStyles({
     alignItems: "flex-start",
   }
 });
-
+  
+/**
+ * Contenedor con la información del actor
+ * @param {string} name Nombre del actor
+ * @param {string} age Edad del actor
+ * @param {string} birthday Cumpleaños del actor
+ * @param {string} desc Biografia del actor
+ * Para exportar a layout: <ActorInfo />
+ *
+ */
 export default function ActorInfo(props) {
   const classes = useStyles();
   const {name, age, birthday, desc} = props.info

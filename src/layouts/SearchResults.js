@@ -1,9 +1,20 @@
+//Componentes
 import Base from "./Base";
 import MiniCard from "../components/MiniCard";
+
+//Módulos
 import React, { useEffect, useState } from "react";
+
+//Estilos
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
+/**
+ * Resultados de buscar una película.
+ * 
+ * @param {string} movie nombre de la persona.
+ *
+ */
 export default function SearchResults(props) {
   const [results, setRes] = useState([]);
 

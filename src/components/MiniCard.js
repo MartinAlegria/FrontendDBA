@@ -1,5 +1,8 @@
+//Componentes
 import * as React from 'react';
 import PropTypes from 'prop-types';
+
+//Estilos
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -7,7 +10,7 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
 import {
   BrowserRouter as Router,
   Switch,
@@ -32,6 +35,12 @@ const useStyles = makeStyles({
   },
 });
 
+/**
+ * Tarjeta pequeña
+ * @param {Object} post Objeto con la información título, imagen y descripción.
+ * Para exportar a layout: <MiniCard />
+ *
+ */
 export default function MiniCard(props) {
   const classes = useStyles();
   const { post } = props;
@@ -47,9 +56,9 @@ export default function MiniCard(props) {
               <Typography variant="subtitle1" paragraph>
                 {post.description}
               </Typography>
-              <Link variant="subtitle1" href={`Movie/${post.title}`}>
+              <Button href={`/Movie/${post.title}`}>
               Continue reading...
-            </Link>
+            </Button>
             </CardContent>
           </div>
             <CardMedia

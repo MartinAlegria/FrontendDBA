@@ -1,4 +1,7 @@
+//Modulos
 import React from "react";
+
+//Estilos
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import {
   Card, CardActionArea,
@@ -11,7 +14,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,6 +40,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
+/**
+ * Tarjeta con la información del actor
+ * @param {string} name Nombre del actor
+ * @param {string} image Imagen del actor
+ * Para exportar a layout: <Actor />
+ *
+ */
 export default function Actor(props) {
   const classes = useStyles();
   const theme = useTheme();

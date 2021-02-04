@@ -1,5 +1,8 @@
+//Componentes
 import * as React from 'react';
 import PropTypes from 'prop-types';
+
+//Estilos
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -38,6 +41,12 @@ const useStyles = makeStyles((theme) => ({
       },
   }));
 
+/**
+ * Tarjeta con la calificación de una película
+ * @param {integer} rating Calificación de una película
+ * Para exportar a layout: <RatingCard />
+ *
+ */
 export default function RatingCard(props){
     const classes = useStyles();
     const { rating } = props;

@@ -1,13 +1,14 @@
+//Módulos
 import * as React from 'react';
+
+//Estilos
 import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
+
+//Componentes
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Person from './Person'
-import Movie from "./Movie" 
-import Home from "./Home" 
-
 
 
 const darkTheme = createMuiTheme({
@@ -132,14 +133,32 @@ const top100Films = [
   { title: 'Monty Python and the Holy Grail', year: 1975 },
 ];
 
+/**
+ * Layout base.
+ * 
+ * @param {components} children componentes que estarán dentro de Base.
+ * 
+ * Para exportar a layout: <Base></Base>
+ *
+ */
 export default function Base(props) {
   const classes = useStyles();
+  const [user, setUser] = React.useState();
+
+  React.useEffect(()=>{
+    //Obtener info de usuario
+    if(sessionStorage.getItem('user')){
+      setUser(sessionStorage.getItem('user'))
+    }
+
+  })
+
   return (
     <React.Fragment>
      <ThemeProvider theme = {darkTheme}>
      <CssBaseline />
       <Container maxWidth="lg">
-        <Header title="PelisChidas.com" sections={sections} autocomplete = {top100Films}/>
+        <Header title="PelisChidas.com" sections={sections} autocomplete = {top100Films} user={user}/>
         
        {props.children}
 

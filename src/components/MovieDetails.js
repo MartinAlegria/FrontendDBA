@@ -1,4 +1,7 @@
+//Componentes
 import React from "react";
+
+//Estilos
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid"
@@ -23,6 +26,16 @@ const useStyles = makeStyles({
   }
 });
 
+
+/**
+ * Mostrar información de una película
+ * @param {string} title Título de la película
+ * @param {integer} year Año de lanzamiento de la película
+ * @param {string} description Descripcion de la película
+ * @param {string} director Director de la película
+ * Para exportar a layout: <MovieDetails />
+ *
+ */
 export default function MovieDetails(props) {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;

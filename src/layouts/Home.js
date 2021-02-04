@@ -1,11 +1,16 @@
-import { makeStyles } from "@material-ui/core/styles";
+//Componentes
 import MovieCard from "../components/MovieCard";
 import MiniCard from "../components/MiniCard";
 import Sidebar from "../components/Sidebar";
+import Base from "./Base";
+
+//Estilos
+import { makeStyles } from "@material-ui/core/styles";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import Grid from "@material-ui/core/Grid";
-import Base from "./Base";
+
+//Módulos
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -63,6 +68,10 @@ const sidebar = {
   ],
 };
 
+/**
+ * Página principal.
+ *
+ */
 export default function Home(props) {
   const classes = useStyles();
 

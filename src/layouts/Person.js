@@ -1,9 +1,14 @@
+//Módulos
 import {useEffect, useState} from "react";
+
+//Estilos
 import {
     Container,
     Grid
 } from '@material-ui/core';
 import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+//Componentes
 import ActorBanner from "../components/ActorBanner"
 import ActorInfo from "../components/ActorInfo"
 import MiniCard from "../components/MiniCard"
@@ -20,6 +25,12 @@ const useStyles = makeStyles((theme) => ({
       },
     }));
 
+/**
+ * Página donde se consulta la información de un actor/director.
+ * 
+ * @param {string} id nombre de la persona.
+ *
+ */
 export default function Person(props){
     const classes = useStyles();
     let [actorData, setActorData] = useState({

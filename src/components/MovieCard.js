@@ -1,10 +1,13 @@
+//Componentes
 import * as React from 'react';
 import PropTypes from 'prop-types';
+
+//Estilos
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
@@ -35,6 +38,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * Header
+ * @param {Object} post Objeto con la información título, link, imagen para texto, imagen y descripción.
+ * Para exportar a layout: <MovieCard />
+ *
+ */
 function MovieCard(props) {
   const classes = useStyles();
   const { post } = props;
@@ -56,9 +65,9 @@ function MovieCard(props) {
             <Typography variant="h5" color="inherit" paragraph>
               {post.description}
             </Typography>
-            <Link variant="subtitle1" href={`Movie/${post.title}`}>
-              {post.linkText}
-            </Link>
+            <Button href={`/Movie/${post.title}`}>
+              Continue reading...
+            </Button>
           </div>
         </Grid>
       </Grid>

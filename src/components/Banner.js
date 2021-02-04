@@ -1,4 +1,7 @@
+//Modulos
 import React from 'react';
+
+//Estilo
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
@@ -17,6 +20,14 @@ const useStyles = makeStyles((theme)=>({
         },
       },
 }));
+
+/**
+ * Pancarta general para mostrar reseñas.
+ * @param {string} title Titulo de la pancarta
+ * @param {string} image Imagen a mostrar en pancarta
+ * Para exportar a layout: <Banner />
+ *
+ */
 
 export default function Banner({title, image}) {
   const classes = useStyles();

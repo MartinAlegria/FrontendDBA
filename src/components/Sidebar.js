@@ -1,5 +1,8 @@
+//Componentes
 import * as React from 'react';
 import PropTypes from 'prop-types';
+
+//Estilos
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -20,6 +23,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * Mostrar top películas
+ * @param {string} good Top 5 mejores peliculas
+ * @param {integer} bad Top 5 peores peliculas
+ * @param {string} description Descripcion de la página
+ * @param {Object} social Contiene nombres e iconos de redes sociales
+ * @param {string} title Título de la página
+ * Para exportar a layout: <MovieDetails />
+ *
+ */
 function Sidebar(props) {
   const classes = useStyles();
   const { good, bad , description, social, title } = props;

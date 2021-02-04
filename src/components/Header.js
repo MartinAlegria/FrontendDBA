@@ -1,5 +1,8 @@
+//Componentes
 import * as React from 'react';
 import PropTypes from 'prop-types';
+
+//Estilos
 import { fade, makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
@@ -9,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import Link from '@material-ui/core/Link';
+import { Avatar } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -17,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbarTitle: {
     flex: 1,
-    marginLeft:50,
+    marginLeft:30,
     textDecoration: "none",
     color: "white"
   },
@@ -42,6 +46,10 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(1),
       width: 'auto',
     },
+  },
+  user: {
+    display: "flex",
+    justifyContent: "space-between"
   },
   searchIcon: {
     padding: theme.spacing(0, 2),
@@ -71,11 +79,20 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
+/**
+ * Header
+ * @param {Array} sections Arreglo con titulo y url de cada sección
+ * @param {string} title Titulo del header
+ * Para exportar a layout: <Header />
+ *
+ */
 function Header(props) {
   const classes = useStyles();
   let history = useHistory();
-  const { sections, title } = props;
+  const { sections, title, user } = props;
   const [search, setSearch] = React.useState()
+
+  const url = user ? `/User/${user}` : "/SignIn"
 
   const handleChange = (e) =>{
     setSearch(e.target.value)
@@ -86,14 +103,38 @@ function Header(props) {
     history.push(`/SearchResults/${search}`)
   }
 
+  const handleClick = () =>{
+    console.log("asdfas")
+    sessionStorage.removeItem('user');
+    window.location.reload();
+  }
+
   return (
     <React.Fragment>
       <Toolbar className={classes.toolbar}>
-        <Link href="/SignUp">
-      <Button variant="outlined" size="small">
-          Sign up
+       
+
+          {user? 
+          <>
+           <Link href={url} className={classes.user}>
+          <Avatar>{user[0]}</Avatar>
+          </Link>
+          <Button variant="outlined" size="small" style={{marginLeft: "10px"}}
+          onClick={handleClick}
+        >
+          Logout
+        </Button>
+        </>
+          :
+           <Link href={url} className={classes.user}>
+           <Button variant="outlined" size="small">
+          Sign In
         </Button>
         </Link>
+        }
+
+
+  
 
         <Link
             color="inherit"

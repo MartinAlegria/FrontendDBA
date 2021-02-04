@@ -1,16 +1,25 @@
+//Modulos
 import * as React from 'react';
 import PropTypes from 'prop-types';
+
+//Estilos
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
+
+/**
+ * Información copyright en footer
+ * Para exportar a layout: <Copyright />
+ *
+ */
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        PelisChidas
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -18,6 +27,7 @@ function Copyright() {
   );
 }
 
+//Estilos
 const useStyles = makeStyles((theme) => ({
   footer: {
     backgroundColor: theme.palette.background.paper,
@@ -26,6 +36,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * Footer con descripcion
+ * @param {string} description Descripcion del footer 
+ * @param {string} title Titulo del footer
+ * Para exportar a layout: <Footer />
+ *
+ */
 function Footer(props) {
   const classes = useStyles();
   const { description, title } = props;

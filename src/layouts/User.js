@@ -1,5 +1,8 @@
+//Componentes
 import Base from "./Base";
 import Review from "../components/Review";
+
+//Estilos
 import Grid from "@material-ui/core/Grid";
 import Banner from "../components/Banner";
 import Typography from "@material-ui/core/Typography";
@@ -9,6 +12,13 @@ import React, { useState, useEffect } from "react";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 
+
+/**
+ * Página que muestra la información del usuario
+ * @param {string} user Nombre de usuario que ha iniciado sesión
+ * Para exportar a layout: <User />
+ *
+ */
 export default function User(props) {
   const [res, setRes] = useState([]);
   const [buttonText, setBT] = useState("Editar Info");
@@ -65,8 +75,6 @@ export default function User(props) {
     if(editar) editUser()
 
   };
-
-
 
   const handleClose = () => {
     setOpen(false);

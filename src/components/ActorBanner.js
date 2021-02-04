@@ -1,4 +1,7 @@
+//Modulos
 import React from 'react';
+
+//Estilos
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
@@ -21,7 +24,11 @@ const useStyles = makeStyles((theme) =>(
       }
 ));
   
-
+/**
+ * Pancarta con imagen del actor
+ * Para exportar a layout: <ActorBanner />
+ *
+ */
 export default function ActorBanner(props) {
   const classes = useStyles();
 
