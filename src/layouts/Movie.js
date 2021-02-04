@@ -8,7 +8,14 @@ import {
   createMuiTheme,
   ThemeProvider,
 } from "@material-ui/core/styles";
-import { Grid, Divider, Container, List, Button } from "@material-ui/core";
+import {
+  Grid,
+  Divider,
+  Container,
+  List,
+  Button,
+  Typography,
+} from "@material-ui/core";
 
 //Componentes
 import MovieInfoCard from "../components/MovieInfoCard";
@@ -79,6 +86,8 @@ export default function Movie(props) {
     year: "",
     actorInfo: [],
   });
+  const [reviews, setReviews] = useState([]);
+  const [score, setScore] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -98,8 +107,33 @@ export default function Movie(props) {
           `http://localhost:9000/movieActors/${props.match.params.id}`
         )
       ).json();
+      const revResp = await (
+        await fetch(
+          `http://localhost:9000/movieReviews/${props.match.params.id}`
+        )
+      ).json();
+
+      const movieScore = await (
+        await fetch(
+          `http://localhost:9000/movieScoreAvg/${props.match.params.id}`
+        )
+      ).json();
+
+      setScore(movieScore[0]);
+
+      let rev = [];
+      revResp.forEach((item) => {
+        rev.push({
+          title: props.match.params.id,
+          user: item[1],
+          rating: item[0].score.low,
+          body: item[0].review,
+        });
+      });
+      setReviews(rev);
+
       let temp = [];
-      console.log(movieResp, actorResp);
+      console.log(movieResp, actorResp, revResp);
       actorResp.forEach((actor) =>
         temp.push({ name: actor[0], img: actor[1] })
       );
@@ -122,8 +156,10 @@ export default function Movie(props) {
       <main>
         <Container maxWidth="lg">
           <Grid container spacing={3} className={classes.mainGrid}>
-            <MovieInfoCard post={movieDetails} />
-            <RatingCard rating={"90"} />
+            <MovieInfoCard post={movieDetails} score={score}/>
+
+            {score  && <RatingCard score={score} />}
+            
 
             {user && (
               <Grid item xs={12}>
@@ -154,15 +190,26 @@ export default function Movie(props) {
                 component="nav"
                 className={classes.root}
                 aria-label="mailbox folders"
+                style={{ width: "-webkit-fill-available" }}
               >
-                {reviews.map((r) => (
-                  <>
-                    <Review info={r} />
-                    <br></br>
-                    <Divider />
-                    <br></br>
-                  </>
-                ))}
+                {reviews.length > 0 ? (
+                  reviews.map((r) => (
+                    <Grid item xs={12}>
+                      <Review info={r} />
+                      <br></br>
+                      <Divider />
+                      <br></br>
+                    </Grid>
+                  ))
+                ) : (
+                  <Typography
+                    component="h4"
+                    variant="h4"
+                    style={{ textAlign: "center" }}
+                  >
+                    No Hay Reseñas Disponibles Para Este Titulo
+                  </Typography>
+                )}
               </List>
             </Grid>
           </Grid>

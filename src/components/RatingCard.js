@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
  */
 export default function RatingCard(props){
     const classes = useStyles();
-    const { rating } = props;
+    const { score } = props;
   
     return (
         <Grid item xs={4} style={{alignSelf: "center"}} >
@@ -61,7 +61,7 @@ export default function RatingCard(props){
               <div style={{display:"flex", flexDirection:"column",justifyContent:"center", alignItems:"center"}}>
                 <Typography component="h1" variant="h2" color="inherit" gutterBottom
                 style={{textAlign:"center"}}>
-                  {rating} - Super Fresh
+                  {score} - Super Fresh
                 </Typography>
               </div>
             </Grid>

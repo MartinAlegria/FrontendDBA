@@ -48,14 +48,16 @@ const useStyles = makeStyles((theme) => ({
  * Tarjeta con información de una película
  * @param {Object} post Objeto con la información título e imagen de la película
  * Para exportar a layout: <MovieInfoCard />
- *
+ * @param {String} score El Score de la pelicula actual, si es null, significa que
+ * no hay suficientes reviews para que tenga un score.
  */
 function MovieInfoCard(props) {
   const classes = useStyles();
-  const { post } = props;
+  const { post, score } = props;
+  const fit = score ? 8 : 12
 
   return (
-    <Grid item xs={8}>
+    <Grid item xs={fit}>
   
       <Paper
           className={classes.mainFeaturedPost}
