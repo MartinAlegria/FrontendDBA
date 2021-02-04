@@ -53,14 +53,17 @@ export default function User(props) {
       ).json();
       console.log(response)
       let temp = [];
-      response.forEach((rev) => {
-        temp.push({
-          title: rev[1].titulo,
-          user: `By: ${props.match.params.user}`,
-          rating: rev[0].score.low,
-          body: rev[0].review,
+      if (response.length > 0){
+        response.forEach((rev) => {
+          temp.push({
+            title: rev[1].titulo,
+            user: `By: ${props.match.params.user}`,
+            rating: rev[0].score.low,
+            body: rev[0].review,
+          });
         });
-      });
+      }
+
       setRes(temp);
 
     };
@@ -203,8 +206,18 @@ export default function User(props) {
         </Grid>
 
 
+
         <Grid item container xs={12}>
-          {res.length > 0 && res.map((rev) => <Review info={rev} userr={user} />)}
+          {res.length > 0 ? res.map((rev) => <Review info={rev} userr={user} />)
+        :
+        <Typography
+        component="h4"
+        variant="h4"
+        style={{ textAlign: "center" }}
+      >
+        No Hay Reseñas Tuyas Disponibles
+      </Typography>  
+        }
         </Grid>
       </Grid>
     </Base>

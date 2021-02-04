@@ -77,15 +77,25 @@ export default function SignUp() {
 
   const [gender, setGender] = React.useState("");
   const [open, setOpen] = React.useState(false);
-  const [user, setUser] = React.useState()
-  const [correo, setCorreo] = React.useState()
-  const [fecha, setFecha] = React.useState()
-  const [pass, setPass] = React.useState()
+  const [user, setUser] = React.useState("")
+  const [correo, setCorreo] = React.useState("")
+  const [fecha, setFecha] = React.useState("")
+  const [pass, setPass] = React.useState("")
 
 
   const registerUser = async() =>{
-    const response = await (await fetch(`http://localhost:9000/registerUser/${user}/${pass}/${correo}/${gender}/${fecha}`)).json()
-    console.log(response)
+    const req = {
+      method: "POST",
+      body: new URLSearchParams({
+        username: user,
+        password: pass,
+        mail: correo,
+        genero: gender,
+        fecha: fecha
+      }),
+    };
+    const response = await (await fetch(`http://localhost:9000/registerUser`, req)).text()
+    sessionStorage.setItem('user', user)
     history.push('/')
 
   }

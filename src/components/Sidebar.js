@@ -69,7 +69,7 @@ function Sidebar(props) {
             href={`/Movie/${movie.titulo}`}
             key={movie.titulo}
           >
-            {movie.titulo} -- Score: {movie.score}
+            {movie.titulo}
           </Link>
         ))}
 
@@ -85,7 +85,7 @@ function Sidebar(props) {
             href={`/Movie/${movie.titulo}`}
             key={movie.titulo}
           >
-            {movie.titulo} -- Score: {movie.score}
+            {movie.titulo} 
           </Link>
         ))}
 

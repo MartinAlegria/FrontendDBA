@@ -158,23 +158,14 @@ function Header(props) {
           <div className={classes.searchIcon}>
           <SearchIcon />
           </div>
-          <Autocomplete
-        freeSolo
-        openOnFocus
-        options={props.autocomplete.map((option) => option.title)}
-        renderInput={(params) => (
         <InputBase
               placeholder="Search…"
-              ref={params.InputProps.ref}
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
               onChange={handleChange}
-            inputProps={params.inputProps}
             />
-        )}
-      />
           </div>
 
 

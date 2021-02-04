@@ -57,11 +57,8 @@ const featuredPosts = [
 ];
 
 const sidebar = {
-  title: "About",
-  description: "Pelis muy chidas con sus scores y sus resenias ",
-  archives: [
-    { title: "Peli 1", url: "/Movie/Avengers", score: "100%" },
-  ],
+  title: "Integrantes",
+  description: "Martin Alegria, Sabrina Santana y Ruben Sanchez ",
   social: [
     { name: "Twitter", icon: TwitterIcon },
     { name: "Facebook", icon: FacebookIcon },
@@ -85,7 +82,6 @@ export default function Home(props) {
             <Sidebar
               title={sidebar.title}
               description={sidebar.description}
-              good={sidebar.archives}
               social={sidebar.social}
             />
             <Grid item container xs={12} md={8} spacing={3}>

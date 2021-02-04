@@ -137,6 +137,7 @@ export default function Movie(props) {
       actorResp.forEach((actor) =>
         temp.push({ name: actor[0], img: actor[1] })
       );
+      console.log(dirObj)
       setMovieDetails({
         description: movieResp[0].descripcion,
         title: movieResp[0].titulo,
