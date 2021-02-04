@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
   },
   sidebarSection: {
     marginTop: theme.spacing(1),
-    textAlign: "center",
   },
   social: {
     marginTop: theme.spacing(1),
@@ -70,7 +69,7 @@ function Sidebar(props) {
             href={`/Movie/${movie.titulo}`}
             key={movie.titulo}
           >
-            {movie.titulo} - {movie.score}
+            {movie.titulo} -- Score: {movie.score}
           </Link>
         ))}
 
@@ -86,7 +85,7 @@ function Sidebar(props) {
             href={`/Movie/${movie.titulo}`}
             key={movie.titulo}
           >
-            {movie.titulo} - {movie.score}
+            {movie.titulo} -- Score: {movie.score}
           </Link>
         ))}
 

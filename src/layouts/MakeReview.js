@@ -44,15 +44,17 @@ export default function MakeReview(props) {
     const req = {
       method: "POST",
       body: new URLSearchParams({
-        username: "userPass.user",
-        review: "userPass.pass",
+        username: props.match.params.user,
+        review: res,
+        score: rating,
+        movie: props.match.params.movie
       }),
     };
     const responsefetch = await (
       await fetch(
-        `http://localhost:9000/createReview/${props.match.params.user}/${res}/${rating}/${props.match.params.movie}`
+        `http://localhost:9000/createReview`, req
       )
-    ).json();
+    ).text();
     console.log(responsefetch);
     history.push("/");
   };

@@ -81,7 +81,6 @@ const useStyles = makeStyles((theme) => ({
 
 /**
  * Header
- * @param {Array} sections Arreglo con titulo y url de cada sección
  * @param {string} title Titulo del header
  * Para exportar a layout: <Header />
  *
@@ -183,7 +182,7 @@ function Header(props) {
 
         <Button variant= "primary" size="small" onClick={handleSumbit}>Buscar</Button>
       </Toolbar>
-      <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
+      {/*<Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
         {sections.map((section) => (
           <Link
             color="inherit"
@@ -196,7 +195,7 @@ function Header(props) {
             {section.title}
           </Link>
         ))}
-      </Toolbar>
+        </Toolbar>*/}
     </React.Fragment>
   );
 }

@@ -20,6 +20,7 @@ import Select from "@material-ui/core/Select";
  *
  */
 export default function User(props) {
+  const user = sessionStorage.getItem('user')
   const [res, setRes] = useState([]);
   const [buttonText, setBT] = useState("Editar Info");
   const [editar, setEdit] = useState(false);
@@ -33,15 +34,24 @@ export default function User(props) {
 
   useEffect(() => {
     const fetchData = async () => {
+
+
+      const response2 = await (await fetch(`http://localhost:9000/userInfoGet/${props.match.params.user}`)).json()
+      console.log(response2)
+
+      setUserInfo({
+        fecha: response2[0].fechaDeNacimiento,
+        genero: response2[0].genero,
+        mail: response2[0].mail,
+        pass: response2[0].password
+      })
+
       const response = await (
         await fetch(
           `http://localhost:9000/userReviews/${props.match.params.user}`
         )
       ).json();
-
-      const response2 = await (await fetch(`http://localhost:9000/userInfo/${props.match.params.user}`)).json()
-
-
+      console.log(response)
       let temp = [];
       response.forEach((rev) => {
         temp.push({
@@ -51,13 +61,8 @@ export default function User(props) {
           body: rev[0].review,
         });
       });
-      setUserInfo({
-        fecha: response2[0].fechaDeNacimiento,
-        genero: response2[0].genero,
-        mail: response2[0].mail,
-        pass: response2[0].password
-      })
       setRes(temp);
+
     };
 
     fetchData();
@@ -199,7 +204,7 @@ export default function User(props) {
 
 
         <Grid item container xs={12}>
-          {res.length > 0 && res.map((rev) => <Review info={rev} />)}
+          {res.length > 0 && res.map((rev) => <Review info={rev} userr={user} />)}
         </Grid>
       </Grid>
     </Base>

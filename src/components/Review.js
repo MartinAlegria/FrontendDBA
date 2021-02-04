@@ -5,7 +5,9 @@ import Grid from "@material-ui/core/Grid";
 //Estilos
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
+import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
+import { TextField } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "10 10",
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6, 6),
-  }
+  },
 }));
 
 /**
@@ -28,14 +30,56 @@ const useStyles = makeStyles((theme) => ({
  */
 export default function Review(props) {
   const classes = useStyles();
-  const {title, user, rating, body} = props.info
+  const [edit, setEdit] = React.useState(false);
+  const [rese, setRes] = React.useState("");
+  const { userr } = props;
+  const { title, user, rating, body } = props.info;
+
+  const handleChange = (event) => {
+    setRes(event.target.value);
+  };
+
+  const modReview = async()=>{
+
+    const req = {
+      method: "POST",
+      body: new URLSearchParams({
+        username: userr,
+        movie: title,
+        review: rese,
+        score: rating
+      }),
+    };
+
+    const res = await (await fetch('http://localhost:9000/modifyReview',req)).text()
+    console.log(res)
+    setEdit(!edit)
+    window.location.reload();
+  }
 
   return (
     <Container maxWidth="lg" className={classes.root}>
-      <Grid item xs={12}>
-        <Typography variant="h5" gutterBottom>
-          {title}
-        </Typography>
+      <Grid item container xs={12}>
+        <Grid item xs={12} md={6}>
+          <Typography variant="h5" gutterBottom>
+            {title}
+          </Typography>
+        </Grid>
+
+        { (userr) &&
+          <Grid item xs={12} md={6} >
+          {
+            edit ?
+            <Button variant="contained" color="primary" style={{margin: "0 10px"}} onClick={modReview}>
+            Guardar Reseña
+          </Button>
+          :
+          <Button variant="contained" color="primary" style={{margin: "0 10px"}} onClick={()=> setEdit(!edit)}>
+            Editar Reseña
+          </Button>
+
+          }
+        </Grid>}
       </Grid>
 
       <Grid item container xs={12}>
@@ -51,14 +95,25 @@ export default function Review(props) {
         </Grid>
       </Grid>
 
-      <Grid item xs={12}>
+      { edit ?
+         <Grid item xs={12}  >
+           <TextField
+           style={{width: "-webkit-fill-available"}}
+         multiline
+         rows={5}
+         placeholder={body}
+         variant="filled"
+         onChange={handleChange}
+       />
+         </Grid>
+        :<Grid item xs={12}>
         <Typography variant="body1" gutterBottom>
           {body}
         </Typography>
-      </Grid>
+      </Grid>}
 
-      </Container>
 
+    </Container>
   );
 }
 
