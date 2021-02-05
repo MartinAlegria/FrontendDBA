@@ -23,10 +23,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 /**
  * Página donde el usuario puede hacer una reseña.
- * 
+ *
  * @param {string} user usuario actual.
  * @param {string} movie película a calificar.
  *
@@ -43,17 +42,18 @@ export default function MakeReview(props) {
     //Crear reseña en backend
     const req = {
       method: "POST",
+      header: {
+        "Content-Type": "aplication/x-www-form-urlencoded; charset=UTF-8",
+      },
       body: new URLSearchParams({
         username: props.match.params.user,
         review: res,
         score: rating,
-        movie: props.match.params.movie
+        movie: props.match.params.movie,
       }),
     };
     const responsefetch = await (
-      await fetch(
-        `http://localhost:9000/createReview`, req
-      )
+      await fetch(`http://localhost:9000/createReview`, req)
     ).text();
     console.log(responsefetch);
     history.push("/");

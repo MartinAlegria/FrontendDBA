@@ -73,7 +73,8 @@ export default function User(props) {
   const editUser = async () =>{
     const req = {
       method: "POST",
-      body: new URLSearchParams({
+        header:{'Content-Type': 'aplication/x-www-form-urlencoded; charset=UTF-8'},
+        body: new URLSearchParams({
         username: props.match.params.user,
         mail: userInfo.mail,
         genero: userInfo.genero,

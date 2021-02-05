@@ -77,36 +77,38 @@ export default function SignUp() {
 
   const [gender, setGender] = React.useState("");
   const [open, setOpen] = React.useState(false);
-  const [user, setUser] = React.useState("")
-  const [correo, setCorreo] = React.useState("")
-  const [fecha, setFecha] = React.useState("")
-  const [pass, setPass] = React.useState("")
+  const [user, setUser] = React.useState("");
+  const [correo, setCorreo] = React.useState("");
+  const [fecha, setFecha] = React.useState("");
+  const [pass, setPass] = React.useState("");
 
-
-  const registerUser = async() =>{
+  const registerUser = async () => {
     const req = {
       method: "POST",
+      header: {
+        "Content-Type": "aplication/x-www-form-urlencoded; charset=UTF-8",
+      },
       body: new URLSearchParams({
         username: user,
         password: pass,
         mail: correo,
         genero: gender,
-        fecha: fecha
+        fecha: fecha,
       }),
     };
-    const response = await (await fetch(`http://localhost:9000/registerUser`, req)).text()
+    const response = await (
+      await fetch(`http://localhost:9000/registerUser`, req)
+    ).text();
 
-    if(response === "OK"){
-      alert("Registrado correctamente, prosiga a iniciar sesion")
-      history.push('/SignIn')
+    if (response === "OK") {
+      alert("Registrado correctamente, prosiga a iniciar sesion");
+      history.push("/SignIn");
     }
-    
+  };
 
-  }
-
-  const handleSumbit = () =>{
-    registerUser()
-  }
+  const handleSumbit = () => {
+    registerUser();
+  };
 
   const handleChange = (event) => {
     setGender(event.target.value);
@@ -131,101 +133,106 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  autoComplete="user"
-                  name="username"
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="username"
-                  label="Username"
-                  autoFocus
-                  onChange={v=>{setUser(v.target.value)}}
-                />
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                autoComplete="user"
+                name="username"
+                variant="outlined"
+                required
+                fullWidth
+                id="username"
+                label="Username"
+                autoFocus
+                onChange={(v) => {
+                  setUser(v.target.value);
+                }}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Correo electronico"
+                name="email"
+                autoComplete="email"
+                onChange={(v) => {
+                  setCorreo(v.target.value);
+                }}
+              />
+            </Grid>
+            <Grid item container xs={12}>
+              <Grid item xs={6}>
+                <Typography component="h3" variant="h5">
+                  Genero:
+                </Typography>
               </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="email"
-                  label="Correo electronico"
-                  name="email"
-                  autoComplete="email"
-                  onChange={v=>{setCorreo(v.target.value)}}
 
-                />
-              </Grid>
-              <Grid item container xs={12}>
-                <Grid item xs={6}>
-                  <Typography component="h3" variant="h5">
-                    Genero:
-                  </Typography>
-                </Grid>
-
-                <Grid item xs={6}>
-                  <Select
-                    labelId="demo-controlled-open-select-label"
-                    id="demo-controlled-open-select"
-                    open={open}
-                    onClose={handleClose}
-                    onOpen={handleOpen}
-                    value={gender}
-                    onChange={handleChange}
-                    style={{ width: "100%" }}
-                  >
-                    <MenuItem value={"M"}>M</MenuItem>
-                    <MenuItem value={"F"}>F</MenuItem>
-                  </Select>
-                </Grid>
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  id="fecha"
-                  label="Fecha de Nacimiento: dd-mm-aaaa"
-                  name="fecha"
-                  autoComplete="fecha"
-                  onChange={v=>{setFecha(v.target.value)}}
-
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                  onChange={v=>{setPass(v.target.value)}}
-
-                />
+              <Grid item xs={6}>
+                <Select
+                  labelId="demo-controlled-open-select-label"
+                  id="demo-controlled-open-select"
+                  open={open}
+                  onClose={handleClose}
+                  onOpen={handleOpen}
+                  value={gender}
+                  onChange={handleChange}
+                  style={{ width: "100%" }}
+                >
+                  <MenuItem value={"M"}>M</MenuItem>
+                  <MenuItem value={"F"}>F</MenuItem>
+                </Select>
               </Grid>
             </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              onClick={handleSumbit}
-            >
-              Sign Up
-            </Button>
-            <Grid container justify="flex-end">
-              <Grid item>
-                <Link href="/SignIn" variant="body2">
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="fecha"
+                label="Fecha de Nacimiento: dd-mm-aaaa"
+                name="fecha"
+                autoComplete="fecha"
+                onChange={(v) => {
+                  setFecha(v.target.value);
+                }}
+              />
             </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                onChange={(v) => {
+                  setPass(v.target.value);
+                }}
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onClick={handleSumbit}
+          >
+            Sign Up
+          </Button>
+          <Grid container justify="flex-end">
+            <Grid item>
+              <Link href="/SignIn" variant="body2">
+                Already have an account? Sign in
+              </Link>
+            </Grid>
+          </Grid>
         </div>
         <Box mt={5}>
           <Copyright />

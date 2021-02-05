@@ -13,9 +13,9 @@ const useStyles = makeStyles({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "flex-start",
-  }
+  },
 });
-  
+
 /**
  * Contenedor con la información del actor
  * @param {string} name Nombre del actor
@@ -27,38 +27,35 @@ const useStyles = makeStyles({
  */
 export default function ActorInfo(props) {
   const classes = useStyles();
-  const {name, age, birthday, desc} = props.info
+  const { name, age, birthday, desc } = props.info;
 
   return (
     <Container maxWidth="lg" className={classes.root}>
       <Grid item xs={12}>
         <Typography variant="h2" gutterBottom>
-         {name}
+          {name}
         </Typography>
       </Grid>
 
       <Grid item container xs={12}>
         <Grid item xs={6}>
           <Typography variant="h4" gutterBottom>
-          {birthday} 
+            {birthday}
           </Typography>
         </Grid>
         <Grid item xs={6}>
           <Typography variant="h4" gutterBottom>
-           Age {age}
+            Age {age}
           </Typography>
         </Grid>
       </Grid>
 
       <Grid item xs={12}>
-      <Typography variant="body1" gutterBottom>
-      {desc}
-      </Typography>
+        <Typography variant="body1" gutterBottom>
+          {desc}
+        </Typography>
       </Grid>
-
-
-      </Container>
-
+    </Container>
   );
 }
 

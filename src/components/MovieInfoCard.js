@@ -1,45 +1,45 @@
 //Componentes
-import * as React from 'react';
-import PropTypes from 'prop-types';
+import * as React from "react";
+import PropTypes from "prop-types";
 
 //Estilos
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import Link from "@material-ui/core/Link";
 
 const useStyles = makeStyles((theme) => ({
   mainFeaturedPost: {
-    position: 'relative',
+    position: "relative",
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
     marginBottom: theme.spacing(4),
-    backgroundImage: 'url(https://source.unsplash.com/random)',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center',
-    height: 250
+    backgroundImage: "url(https://source.unsplash.com/random)",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    height: 250,
   },
   overlay: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     bottom: 0,
     right: 0,
     left: 0,
-    backgroundColor: 'rgba(0,0,0,.3)',
+    backgroundColor: "rgba(0,0,0,.3)",
   },
   mainFeaturedPostContent: {
-    position: 'relative',
+    position: "relative",
     padding: theme.spacing(3),
-    [theme.breakpoints.up('md')]: {
+    [theme.breakpoints.up("md")]: {
       padding: theme.spacing(6),
       paddingRight: 0,
     },
   },
   paper: {
     padding: theme.spacing(2),
-    textAlign: 'center',
+    textAlign: "center",
     color: theme.palette.text.secondary,
   },
 }));
@@ -54,29 +54,38 @@ const useStyles = makeStyles((theme) => ({
 function MovieInfoCard(props) {
   const classes = useStyles();
   const { post, score } = props;
-  const fit = score ? 8 : 12
+  const fit = score ? 8 : 12;
 
   return (
     <Grid item xs={fit}>
-  
       <Paper
-          className={classes.mainFeaturedPost}
-          style={{ backgroundImage: `url(${post.image})` }}
-        >
-          {/* Increase the priority of the hero background image */}
-          {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
-          <div className={classes.overlay} />
-          <Grid container>
-            <Grid item md={6}>
-              <div className={classes.mainFeaturedPostContent}>
-                <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                  {post.title}
-                </Typography>
-              </div>
-            </Grid>
+        className={classes.mainFeaturedPost}
+        style={{ backgroundImage: `url(${post.image})` }}
+      >
+        {/* Increase the priority of the hero background image */}
+        {
+          <img
+            style={{ display: "none" }}
+            src={post.image}
+            alt={post.imageText}
+          />
+        }
+        <div className={classes.overlay} />
+        <Grid container>
+          <Grid item md={6}>
+            <div className={classes.mainFeaturedPostContent}>
+              <Typography
+                component="h1"
+                variant="h3"
+                color="inherit"
+                gutterBottom
+              >
+                {post.title}
+              </Typography>
+            </div>
           </Grid>
-        </Paper>
-
+        </Grid>
+      </Paper>
     </Grid>
   );
 }

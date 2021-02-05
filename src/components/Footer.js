@@ -1,7 +1,7 @@
 //Modulos
 import * as React from "react";
 import PropTypes from "prop-types";
-import logo from "../images/PelisChidas.png"
+import logo from "../images/PelisChidas.png";
 
 //Estilos
 import { makeStyles } from "@material-ui/core/styles";
@@ -50,18 +50,22 @@ function Footer(props) {
   return (
     <footer className={classes.footer}>
       <Container maxWidth="lg">
-        <Grid item xs={12} style={{
-            textAlign: "center"
-          }}>
-        <img
-          src={logo}
+        <Grid
+          item
+          xs={12}
           style={{
-            flex: 1,
-            textDecoration: "none",
-            color: "white",
-            height: 30,
+            textAlign: "center",
           }}
-        />
+        >
+          <img
+            src={logo}
+            style={{
+              flex: 1,
+              textDecoration: "none",
+              color: "white",
+              height: 30,
+            }}
+          />
         </Grid>
 
         <Typography

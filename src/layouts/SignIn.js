@@ -79,6 +79,9 @@ export default function SignIn(props) {
     const fetchData = async () => {
       const req = {
         method: "POST",
+        header: {
+          "Content-Type": "aplication/x-www-form-urlencoded; charset=UTF-8",
+        },
         body: new URLSearchParams({
           username: userPass.user,
           password: userPass.pass,
@@ -91,8 +94,8 @@ export default function SignIn(props) {
       console.log(res);
 
       if (res === "OK") {
-      sessionStorage.setItem("user", userPass.user);
-      history.push("/");
+        sessionStorage.setItem("user", userPass.user);
+        history.push("/");
       } else {
         alert("Usuario o Password incorrectos");
       }

@@ -39,23 +39,27 @@ export default function Review(props) {
     setRes(event.target.value);
   };
 
-  const modReview = async()=>{
-
+  const modReview = async () => {
     const req = {
       method: "POST",
+      header: {
+        "Content-Type": "aplication/x-www-form-urlencoded; charset=UTF-8",
+      },
       body: new URLSearchParams({
         username: userr,
         movie: title,
         review: rese,
-        score: rating
+        score: rating,
       }),
     };
 
-    const res = await (await fetch('http://localhost:9000/modifyReview',req)).text()
-    console.log(res)
-    setEdit(!edit)
+    const res = await (
+      await fetch("http://localhost:9000/modifyReview", req)
+    ).text();
+    console.log(res);
+    setEdit(!edit);
     window.location.reload();
-  }
+  };
 
   return (
     <Container maxWidth="lg" className={classes.root}>
@@ -66,20 +70,29 @@ export default function Review(props) {
           </Typography>
         </Grid>
 
-        { (userr) &&
-          <Grid item xs={12} md={6} >
-          {
-            edit ?
-            <Button variant="contained" color="primary" style={{margin: "0 10px"}} onClick={modReview}>
-            Guardar Reseña
-          </Button>
-          :
-          <Button variant="contained" color="primary" style={{margin: "0 10px"}} onClick={()=> setEdit(!edit)}>
-            Editar Reseña
-          </Button>
-
-          }
-        </Grid>}
+        {userr && (
+          <Grid item xs={12} md={6}>
+            {edit ? (
+              <Button
+                variant="contained"
+                color="primary"
+                style={{ margin: "0 10px" }}
+                onClick={modReview}
+              >
+                Guardar Reseña
+              </Button>
+            ) : (
+              <Button
+                variant="contained"
+                color="primary"
+                style={{ margin: "0 10px" }}
+                onClick={() => setEdit(!edit)}
+              >
+                Editar Reseña
+              </Button>
+            )}
+          </Grid>
+        )}
       </Grid>
 
       <Grid item container xs={12}>
@@ -95,24 +108,24 @@ export default function Review(props) {
         </Grid>
       </Grid>
 
-      { edit ?
-         <Grid item xs={12}  >
-           <TextField
-           style={{width: "-webkit-fill-available"}}
-         multiline
-         rows={5}
-         placeholder={body}
-         variant="filled"
-         onChange={handleChange}
-       />
-         </Grid>
-        :<Grid item xs={12}>
-        <Typography variant="body1" gutterBottom>
-          {body}
-        </Typography>
-      </Grid>}
-
-
+      {edit ? (
+        <Grid item xs={12}>
+          <TextField
+            style={{ width: "-webkit-fill-available" }}
+            multiline
+            rows={5}
+            placeholder={body}
+            variant="filled"
+            onChange={handleChange}
+          />
+        </Grid>
+      ) : (
+        <Grid item xs={12}>
+          <Typography variant="body1" gutterBottom>
+            {body}
+          </Typography>
+        </Grid>
+      )}
     </Container>
   );
 }

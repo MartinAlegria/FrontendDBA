@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 
 /**
  * Resultados de buscar una película.
- * 
+ *
  * @param {string} movie nombre de la persona.
  *
  */
@@ -26,20 +26,20 @@ export default function SearchResults(props) {
         )
       ).json();
       console.log(response);
-      let temp = []
-      response.forEach((r)=>{
+      let temp = [];
+      response.forEach((r) => {
         temp.push({
           title: r.titulo,
           description: r.descripcion,
-          image: r.poster
-        })
-      })
-      console.log(temp)
+          image: r.poster,
+        });
+      });
+      console.log(temp);
       setRes(temp);
     };
 
     fetchMovies();
-  },[props.match.params.movie]);
+  }, [props.match.params.movie]);
 
   return (
     <Base>

@@ -137,7 +137,7 @@ export default function Movie(props) {
       actorResp.forEach((actor) =>
         temp.push({ name: actor[0], img: actor[1] })
       );
-      console.log(dirObj)
+      console.log(dirObj);
       setMovieDetails({
         description: movieResp[0].descripcion,
         title: movieResp[0].titulo,
@@ -157,10 +157,9 @@ export default function Movie(props) {
       <main>
         <Container maxWidth="lg">
           <Grid container spacing={3} className={classes.mainGrid}>
-            <MovieInfoCard post={movieDetails} score={score}/>
+            <MovieInfoCard post={movieDetails} score={score} />
 
-            {score  && <RatingCard score={score} />}
-            
+            {score && <RatingCard score={score} />}
 
             {user && (
               <Grid item xs={12}>

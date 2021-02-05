@@ -43,11 +43,11 @@ function Sidebar(props) {
         await fetch("http://localhost:9000/bottomMovies")
       ).json();
       setGood(res);
-      setBad(res2)
+      setBad(res2);
     };
 
     fetchData();
-  },[]);
+  }, []);
 
   return (
     <Grid item xs={12} md={4}>
@@ -85,7 +85,7 @@ function Sidebar(props) {
             href={`/Movie/${movie.titulo}`}
             key={movie.titulo}
           >
-            {movie.titulo} 
+            {movie.titulo}
           </Link>
         ))}
 
