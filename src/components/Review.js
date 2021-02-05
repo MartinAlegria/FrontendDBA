@@ -8,6 +8,7 @@ import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import { TextField } from "@material-ui/core";
+import Rating from "@material-ui/lab/Rating";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,11 +30,13 @@ const useStyles = makeStyles((theme) => ({
  *
  */
 export default function Review(props) {
-  const classes = useStyles();
-  const [edit, setEdit] = React.useState(false);
-  const [rese, setRes] = React.useState("");
-  const { userr } = props;
   const { title, user, rating, body } = props.info;
+  const classes = useStyles();
+  const [rat, setRating] = React.useState(rating);
+  const [edit, setEdit] = React.useState(false);
+  const [hover, setHover] = React.useState(-1);
+  const [rese, setRes] = React.useState(body);
+  const { userr } = props;
 
   const handleChange = (event) => {
     setRes(event.target.value);
@@ -49,7 +52,7 @@ export default function Review(props) {
         username: userr,
         movie: title,
         review: rese,
-        score: rating,
+        score: rat,
       }),
     };
 
@@ -58,7 +61,7 @@ export default function Review(props) {
     ).text();
     console.log(res);
     setEdit(!edit);
-    window.location.reload();
+    //window.location.reload();
   };
 
   return (
@@ -101,11 +104,27 @@ export default function Review(props) {
             {user}
           </Typography>
         </Grid>
-        <Grid item xs={6}>
-          <Typography variant="subtitle1" gutterBottom>
-            Score: {rating}
-          </Typography>
-        </Grid>
+
+        {edit ? (
+          <Rating
+            name="hover-feedback"
+            value={rat}
+            precision={1}
+            max={10}
+            onChange={(event, newValue) => {
+              setRating(newValue);
+            }}
+            onChangeActive={(event, newHover) => {
+              setHover(newHover);
+            }}
+          />
+        ) : (
+          <Grid item xs={6}>
+            <Typography variant="subtitle1" gutterBottom>
+              Score: {rat}
+            </Typography>
+          </Grid>
+        )}
       </Grid>
 
       {edit ? (
@@ -114,6 +133,7 @@ export default function Review(props) {
             style={{ width: "-webkit-fill-available" }}
             multiline
             rows={5}
+            value={rese}
             placeholder={body}
             variant="filled"
             onChange={handleChange}
@@ -122,7 +142,7 @@ export default function Review(props) {
       ) : (
         <Grid item xs={12}>
           <Typography variant="body1" gutterBottom>
-            {body}
+            {rese}
           </Typography>
         </Grid>
       )}
